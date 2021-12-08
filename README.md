@@ -15,11 +15,11 @@ Instaclone is a Django web application that emulates the basic functionalities o
 
 ## Homepage Previews
 The app looks like this: 
-  ![Image](./photos/static/assets/demo.png)
+  ![Image](/media/pictures/livepage.png)
 
 ## Admin Dashboard
 The admin dashboard for managing posted images looks like this: 
-  ![Image](./photos/static/assets/admin.png)
+  ![Image](/media/pictures/admin.png)
   
 ## Author
 [Levy Omolo](https://github.com/omololevy/)
