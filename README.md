@@ -10,7 +10,7 @@ Instaclone is a Django web application that emulates the basic functionalities o
 
 ## Project live sites
   * This is the live [link to the repo ](https://github.com/omololevy/instaclone) <br>
-  * This is the live [link to the app ](https://levy-insta.herokuapp.com//)
+  * This is the live [link to the app ](https://levy-insta.herokuapp.com/)
 
 
 ## Homepage Previews
@@ -65,7 +65,7 @@ With this application, users are able to :
 * CSS
 * Heroku
 
-## Unaccomplished Tasks
+## Yet to be implemented
 These tasks should be accomplished this year during the holiday break:
 1. Notifications upon being followed.
 2. Messaging other users directly.
@@ -77,8 +77,8 @@ These tasks should be accomplished this year during the holiday break:
 
 For any further inquiries or contributions or comments, reach me at [Levy Omolo](https://github.com/omololevy)
 
-### License
+## LICENSE
 
-[MIT License](https://github.com/omololevy/instaclone/blob/main/license)
+[MIT License](https://github.com/omololevy/instaclone/blob/master/LICENSE)
 
 Copyright (c) 2021
