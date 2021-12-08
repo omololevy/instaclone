@@ -1,0 +1,26 @@
+{%extends 'instagram/base.html'%}
+<!-- html -->
+{% block content %}
+<!-- content -->
+<div class="container">
+  <div class="users-wrapper">
+    <h4 class="text-center mb-3">Searches Found</h4>
+    <hr />
+    {% for profile in profiles %}
+
+    <div class="single-user-container mt-3">
+      <a class="text-decoration-none user" href="{%url 'instagram:user_profile' username=profile.user.username %}">
+        <div class="image">
+          <img src="{{profile.profile_picture.url}}" alt="" />
+        </div>
+        <div class="user_name mb-2">{{profile.user.username.capitalize}}</div>
+      </a>
+    </div>
+    <hr />
+    {%empty%}
+    <h4 class="text-center">No user found search-term {{message}}</h4>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock%}
