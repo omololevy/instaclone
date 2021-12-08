@@ -1,0 +1,30 @@
+{% extends 'registration/base.html' %}
+<!-- bootstrap -->
+{% load bootstrap4 %}
+<!-- content -->
+{% block content %} {% load static %}
+<div class="container mt-5">
+  <div class="login-form">
+    <p class="logo text-center">
+      <img src="../../static/images/Instagram_logo.png" alt="" />
+    </p>
+
+    <form action="" method="post" novalidate>
+      {%csrf_token%} {% bootstrap_form form %}
+      <button type="submit" class="btn btn-primary btn-lg mx-auto">
+        Sign In
+      </button>
+    </form>
+
+    <div class="password text-center mt-3">
+      <a href="" class="mx-auto mb-3">Forgot password? </a>
+    </div>
+    <hr />
+    <div class="reg-link text-center">
+      Don't have an account?
+      <a href="{% url 'instagram:signup' %}">Sign up</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
