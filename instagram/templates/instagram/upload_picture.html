@@ -1,0 +1,17 @@
+{%extends 'instagram/base.html'%}
+<!-- bootstrap -->
+{% load bootstrap4 %}
+<!-- html -->
+{% block content %}
+<!-- content -->
+<div class="container mt-4">
+  <div class="form">
+    <h4 class="text-center">Post picture</h4>
+    <form action="{%url 'instagram:upload' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %} {% bootstrap_form form %}
+      <input type="submit" class="btn btn-success btn-lg" value="Post" />
+    </form>
+  </div>
+</div>
+
+{% endblock%}
