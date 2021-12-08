@@ -1,0 +1,8 @@
+Hello {{name}},
+Welcome to the web-app that emulates the operation of the instagram. Feel free to update your profile, 
+make post(s), <br> comment(s), like and share posts. Also you may follow and unfollow idividuals.
+Feel at home.
+
+Your honoured Developer,
+Cotech Levy.
+https://github.com/omololevy
