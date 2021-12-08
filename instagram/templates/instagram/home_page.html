@@ -1,0 +1,96 @@
+{%extends 'instagram/base.html'%}
+<!-- html -->
+{% block content %}
+<!-- content -->
+<div class="container-fluid">
+  <div class="row main-container">
+    <div class="col-md-7 post-container mt-3">
+      {% for post in posts %}
+
+      <div class="card m-3">
+        <div class="card-header p-1">
+          <div class="image" href="{%url 'instagram:user_profile' username=user %}">
+            <img src="{{post.user.profile_picture.url}}" alt="" />
+          </div>
+          <div class="user_name ml-1 mb-2" >{{post.user.user.username}}</div>
+        </div>
+        {%if post.image%}
+        <a href="{%url 'instagram:view_post' post.id %}">
+          <img src="{{post.image.url}}" class="card-img-top" alt="post" />
+        </a>
+
+        {%endif%}
+
+        <div class="card-body">
+          <div class="icons-container">
+            <div class="like mr-3">
+              <a href="{%url 'instagram:like_post' post.id %}">
+                <img src="../../static/images/liked.png" alt="" />
+              </a>
+            </div>
+            <div class="comment mr-3">
+              <a href="{%url 'instagram:view_post' post.id %}">
+                <img src="../../static/images/message1.png" alt="" />
+              </a>
+            </div>
+            <div class="comment">
+              <a href="">
+                <img src="../../static/images/share1.png" alt="" />
+              </a>
+            </div>
+          </div>
+          <h5>{{post.likes.count}} likes</h5>
+          <div class="card-text">
+            <span class="username"> {{post.user.user.username}} </span>
+            <span class="caption">{{post.caption}}</span>
+          </div>
+          <h5>
+            <a class="text-decoration-none" href="{%url 'instagram:view_post' post.id %}">
+              View all comments
+            </a>
+          </h5>
+          <span class="text-muted">{{post.created}}</span>
+        </div>
+        <div class="comments-form">
+          <form action="{%url 'instagram:add_comment' post.id %}" method="POST">
+            {%csrf_token%}
+            <div class="input-group">
+              <input type="text" class="form-control" name="comment" placeholder="Add comment" />
+              <button class="btn btn-success" type="submit">Post</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+    <div class="col-md-5 followers-container">
+      <div class="followers-wrapper">
+        <div class="user-header">
+          <div class="image" href="{%url 'instagram:user_profile' username=user %}">
+            <img src="{{user.profile.profile_picture.url}}" alt="" />
+          </div>
+          <div class="user_name ml-1 mb-2">{{user.username}}</div>
+        </div>
+        <hr class="m-0" />
+        <p class="text-muted text-center mt-2 mb-2">Suggestions to follow</p>
+        <div class="users-wrapper">
+          {% for user in users %}
+
+          <div class="single-user-container">
+            <a class="text-decoration-none user" href="{%url 'instagram:user_profile' username=user %}">
+              <div class="image">
+                <img src="{{user.profile.profile_picture.url}}" alt="" />
+              </div>
+              <div class="user_name mb-2">{{user.username}}</div>
+            </a>
+          </div>
+          <hr />
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock%}
