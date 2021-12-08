@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../static/css/navbar.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="  https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+  <title>Instagram</title>
+
+  <style>
+    a {
+      text-decoration: none;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    .icons {
+      display: flex;
+    }
+
+    .dropdown-toggle::after {
+      display: none;
+    }
+
+    .nav-link {
+      color: #000 !important;
+      text-decoration: none;
+    }
+
+    .navbar-brand img {
+      height: 48px;
+      margin-left: 20px;
+    }
+
+    .nav-icon {
+      height: 20px;
+      width: 20px;
+    }
+
+    .nav-user {
+      height: 45px;
+      width: 45px;
+
+      border-radius: 50%;
+    }
+
+    .nav-user img,
+    .nav-icon img {
+      width: 100%;
+    }
+
+    .navbar form input {
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  {% load static%}
+  <nav class="navbar m-0 bg-white">
+    <a href="/" class="navbar-brand mb-0 h1">
+      <img src="../../static/images/Instagram_logo.png" alt="" />
+    </a>
+    <form class="form-inline" id="searchform" action="{% url 'instagram:search_results' %}" role="search">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="searching"
+        name="search_profile" />
+    </form>
+    {% if user.is_authenticated %}
+    <ul class="icons m-0">
+      <li class="nav-item">
+        <a class="nav-link mr-0" href="{%url 'instagram:home'%}">
+          <img src="../../static/images/home1.png" alt="" class="nav-icon" height="20" />
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link mr-0" href="#">
+          <img src="../../static/images/send.png" alt="" class="nav-icon" />
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link mr-0" href="{%url 'instagram:upload'%}">
+          <img src="../../static/images/more.png" alt="" class="nav-icon" />
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link mr-0" href="#">
+          <img src="../../static/images/compass.png" alt="" class="nav-icon" />
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link mr-0" href="{%url 'instagram:upload'%}">
+          <img src="../../static/images/heart.png" alt="" class="nav-icon" />
+        </a>
+      </li>
+   
+      <li class="nav-item dropdown mr-5">
+        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="{{user.profile.profile_picture.url}}" alt="" class="nav-user" />
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{%url 'instagram:profile' username=user %}">Profile</a>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout">Logout</a>
+        </div>
+      </li>
+    </ul>
+    {% else %}
+    <li>
+      <a class="btn btn-default" href="accounts/login">Sign in</a>
+    </li>
+
+    {%endif%}
+  </nav>
+  <hr class="m-0" />
+</body>
+
+</html>
