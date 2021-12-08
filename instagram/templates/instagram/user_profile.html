@@ -1,0 +1,60 @@
+{%extends 'instagram/base.html'%}
+<!-- html -->
+{% block content %}
+<!-- content -->
+<div class="container-fluid m-5">
+  <div class="user_profile">
+    <div class="image">
+      {% if profile.profile_picture %}
+      <img class="profile-picture mt-3" src="{{profile.profile_picture.url}}" alt="" />
+      {% endif %}
+    </div>
+    <div class="details">
+      <div class="first">
+        <h3>{{user_select.username}}</h3>
+        {% if follow_status %}
+        <div>
+          <a href="{%url 'instagram:unfollow' user_select.id %}" class="btn btn-primary">Following</a>
+        </div>
+        {%else%}
+        <div>
+          <a href="{%url 'instagram:follow' user_select.id %}" class="btn btn-outline-primary">Follow</a>
+        </div>
+        {% endif %}
+      </div>
+      <div class="second">
+        <h5>Bio</h5>
+        <p class="">{{profile.bio}}</p>
+      </div>
+      <div class="third">
+        <div class="posts ml-3"><span>{{posts.count}}</span> posts</div>
+        <div class="followers ml-3">
+          <span>{{user_select.followers.count}}</span> followers
+        </div>
+        <div class="following ml-3">
+          <span>{{user_select.following.count}}</span> following
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="user-posts">
+    <div class="row">
+      {% for post in posts %}
+      <div class="col-md-4">
+        <div class="post-wrapper">
+          <a href="{%url 'instagram:view_post' post.id %}">
+            <img class="img-responsive" src="{{post.image.url}}" alt="..." />
+          </a>
+        </div>
+      </div>
+
+      {%empty%}
+
+      <h4 class="text-center">No posts yet</h4>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock%}
