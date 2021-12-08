@@ -1,0 +1,77 @@
+{%extends 'instagram/base.html'%}
+<!-- html -->
+{% block content %}
+<!-- content -->
+<div class="container">
+  <div class="single_post-container row">
+    <div class="col-md-6 image-container">
+      <img src="{{post.image.url}}" alt="" />
+    </div>
+    <div class="col-md-6 comments-container">
+      <div class="user">
+        <div class="image">
+          <img src="{{post.user.profile_picture.url}}" alt="" />
+        </div>
+        <div class="user_name ml-1 mb-2">{{post.user.user.username}}</div>
+      </div>
+      <hr />
+      <div class="post">
+        <span class="user_name"> {{post.user.user.username}} </span>
+        {{post.name}}
+        <p class="post_caption">{{post.caption}}</p>
+      </div>
+      <div class="comments-wrapper">
+        <h4 class="text-center">Comments</h4>
+        {% for comment in comments %}
+        <div class="comment_wrapper">
+          <div class="comment_user user_name mr-2">
+            <div class="user">
+              <div class="image">
+                <img src="{{comment.user.profile.profile_picture.url}}" alt="" />
+              </div>
+              <div class="user_name ml-1 mb-2">{{comment.user.username}}</div>
+            </div>
+          </div>
+          <div class="comment-comment mt-3">
+            <p>...{{comment.comment.capitalize}}</p>
+          </div>
+        </div>
+        <hr class="m-1 p-0" />
+        {%empty%}
+        <h5>No comments</h5>
+        {% endfor %}
+      </div>
+
+      <div class="icons-container mt-2">
+        <div class="like mr-3">
+          <a href="{% url 'instagram:like_post' post_id=post.id %}">
+            <img src="../../static/images/liked.png" alt="" />
+          </a>
+        </div>
+        <div class="comment mr-3">
+          <a href="#">
+            <img src="../../static/images/message1.png" alt="" />
+          </a>
+        </div>
+        <div class="comment">
+          <a href="">
+            <img src="../../static/images/share1.png" alt="" />
+          </a>
+        </div>
+      </div>
+      <h5>{{post.likes.count}} likes</h5>
+      <span class="text-muted">{{post.created}}</span>
+      <div class="comments-form mt-2">
+        <form action="{%url 'instagram:add_comment' post.id %}" method="POST">
+          {%csrf_token%}
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="comment" placeholder="Add comment" />
+            <button class="btn btn-success" type="submit">Post</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock%}
