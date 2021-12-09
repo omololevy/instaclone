@@ -12,4 +12,4 @@ def send_welcome_email(name,receiver):
 
     msg = EmailMultiAlternatives(subject,text_content,sender,[receiver])
     msg.attach_alternative(html_content,'text/html')
-    msg.send()
+    
