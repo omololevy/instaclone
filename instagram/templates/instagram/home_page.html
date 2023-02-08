@@ -80,7 +80,7 @@
       {% endfor %}
     </div>
 
-    {% if current_user %}
+    {% if user.is_authenticated %}
     <div class="col-md-5 followers-container">
       <div class="followers-wrapper">
         <div class="user-header">
@@ -91,7 +91,7 @@
         </div>
         <hr class="m-0" />
         {% endif %}
-        {% if current_user %}
+        {% if user.is_authenticated %}
         <p class="text-muted text-center mt-2 mb-2">Suggestions to follow</p>
         <div class="users-wrapper">
           {% for user in users %}
