@@ -79,8 +79,6 @@
 
       {% endfor %}
     </div>
-
-    {% if user.is_authenticated %}
     <div class="col-md-5 followers-container">
       <div class="followers-wrapper">
         <div class="user-header">
@@ -90,8 +88,6 @@
           <div class="user_name ml-1 mb-2">{{user.username}}</div>
         </div>
         <hr class="m-0" />
-        {% endif %}
-        {% if user.is_authenticated %}
         <p class="text-muted text-center mt-2 mb-2">Suggestions to follow</p>
         <div class="users-wrapper">
           {% for user in users %}
@@ -106,22 +102,6 @@
           </div>
           <hr />
           {% endfor %}
-          {% else %}
-          <p class="text-muted text-center mt-2 mb-2">Users you may know</p>
-        <div class="users-wrapper">
-          {% for user in all_users %}
-
-          <div class="single-user-container">
-            <a class="text-decoration-none user" href="{%url 'instagram:user_profile' username=user %}">
-              <div class="image">
-                <img src="{{user.profile.profile_picture.url}}" alt="" />
-              </div>
-              <div class="user_name mb-2">{{user.username}}</div>
-            </a>
-          </div>
-          <hr />
-          {% endfor %}
-          {% endif %}
         </div>
       </div>
     </div>

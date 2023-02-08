@@ -37,20 +37,18 @@ def signup_view(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
-
+@login_required(login_url='/accounts/login/')
 def home_page(request):
     current_user = request.user
     posts = Image.objects.all()
    
     user = User.objects.get(username=current_user.username)
     users = User.objects.exclude(username=current_user.username).exclude(is_superuser=True)
-    all_users = User. objects.all()
   
     ctx = {
         'posts':posts,
         'user':user,
         'users':users,     
-        'all_users':all_users,
         }
 
     return render(request,'instagram/home_page.html',ctx)
@@ -101,7 +99,7 @@ def add_comment(request,post_id):
         )
     return redirect('instagram:view_post' ,pk=post_id)
 
-@login_required(login_url='/accounts/login/')
+
 def like_post(request,post_id):
   
     post = Image.objects.get(pk=post_id)

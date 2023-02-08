@@ -79,7 +79,8 @@ WSGI_APPLICATION = 'insta_clone.wsgi.application'
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG=True
 # development
 if config('MODE')=="dev":
    DATABASES = {
