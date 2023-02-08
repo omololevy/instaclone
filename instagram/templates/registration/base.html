@@ -7,13 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="{% static 'images/favicon.png' %}" />
   <title>Instagram</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="src/imgs/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="src/imgs/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="src/imgs/favicon-16x16.png">
+  <link rel="manifest" href="src/imgs/site.webmanifest">
+
 
   {% block styles %} {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/base.css' %}" />
   {% endblock %}
 </head>
-
-<body>
+<body>  
   {% block content %} {%endblock%} {% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %} {% endblock %}
