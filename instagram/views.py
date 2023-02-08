@@ -44,11 +44,13 @@ def home_page(request):
    
     user = User.objects.get(username=current_user.username)
     users = User.objects.exclude(username=current_user.username).exclude(is_superuser=True)
+    all_users = User. objects.all()
   
     ctx = {
         'posts':posts,
         'user':user,
         'users':users,     
+        'all_users':all_users,
         }
 
     return render(request,'instagram/home_page.html',ctx)
