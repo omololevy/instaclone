@@ -22,11 +22,12 @@
 
     <form action="" method="post" novalidate>
       {%csrf_token%} {% bootstrap_form form %}
-      <button type="submit" class="btn btn-primary btn-lg mx-auto">
-        Sign In
+      <button type="submit" class="btn btn-info btn-block mx-auto">
+        Log In
       </button>
+     
     </form>
-
+    <!-- <span><hr style="width:30%;">OR <hr style="width:30%; float: right;"></span> -->
     <div class="password text-center mt-3">
       <a href="" class="mx-auto mb-3">Forgot password? </a>
     </div>
